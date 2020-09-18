@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Module\Accounting\Domain\Entity\Contractor;
 
 /**
- * Физическое лицо
+ * Реквизиты физического лица
  */
-final class NaturalPerson implements TypeDataInterface
+final class NaturalPersonDetails implements DetailsInterface
 {
     /**
      * @var Passport Паспорт

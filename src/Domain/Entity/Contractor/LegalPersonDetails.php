@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Module\Accounting\Domain\Entity\Contractor;
 
 /**
- * Юридическое лицо
+ * Реквизиты юридического лица
  */
-final class LegalPerson implements TypeDataInterface
+final class LegalPersonDetails implements DetailsInterface
 {
     /**
      * @var string|null Короткое название

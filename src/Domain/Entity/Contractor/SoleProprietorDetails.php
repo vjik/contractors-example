@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Module\Accounting\Domain\Entity\Contractor;
 
 /**
- * Индивидуальный предприниматель
+ * Реквизиты индивидуального предпринимателя
  */
-final class SoleProprietor implements TypeDataInterface
+final class SoleProprietorDetails implements DetailsInterface
 {
     /**
      * @var Passport Паспорт

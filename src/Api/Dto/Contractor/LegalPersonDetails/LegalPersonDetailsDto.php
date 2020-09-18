@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Module\Accounting\Api\Dto\Contractor\CreateLegalPersonContractor;
+namespace Module\Accounting\Api\Dto\Contractor\LegalPersonDetails;
 
-final class CreateLegalPersonContractorDto
+final class LegalPersonDetailsDto
 {
     /**
      * @var string|null Короткое название

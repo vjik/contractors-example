@@ -29,46 +29,25 @@ final class Contractor
     private $fullName;
 
     /**
-     * @var LegalPerson|null
+     * @var LegalPersonDetails|null
      */
-    private $legalPerson = null;
+    private $legalPersonDetails = null;
 
     /**
-     * @var SoleProprietor|null
+     * @var SoleProprietorDetails|null
      */
-    private $soleProprietor = null;
+    private $soleProprietorDetails = null;
 
     /**
-     * @var NaturalPerson|null
+     * @var NaturalPersonDetails|null
      */
-    private $naturalPerson = null;
+    private $naturalPersonDetails = null;
 
-    private function __construct(int $typeId)
+    public function __construct(int $typeId)
     {
         $this->typeId = $typeId;
         $this->shortName = '';
         $this->fullName = '';
-    }
-
-    public static function makeLegalPersonContractor(): self
-    {
-        $contractor = new Contractor(ContractorType::LEGAL_PERSON);
-        $contractor->legalPerson = new LegalPerson();
-        return $contractor;
-    }
-
-    public static function makeSoleProprietorContractor(): self
-    {
-        $contractor = new Contractor(ContractorType::SOLE_PROPRIETOR);
-        $contractor->soleProprietor = new SoleProprietor();
-        return $contractor;
-    }
-
-    public static function makeNaturalPersonContractor(): self
-    {
-        $contractor = new Contractor(ContractorType::NATURAL_PERSON);
-        $contractor->naturalPerson = new NaturalPerson();
-        return $contractor;
     }
 
     public function getId(): int
@@ -99,72 +78,72 @@ final class Contractor
         return $this->fullName;
     }
 
-    public function getLegalPerson(): LegalPerson
+    public function getLegalPersonDetails(): LegalPersonDetails
     {
         if ($this->typeId !== ContractorType::LEGAL_PERSON) {
             throw new LogicException('Contractor is not legal person.');
         }
-        return $this->legalPerson;
+        return $this->legalPersonDetails;
     }
 
-    public function setLegalPerson(LegalPerson $legalPerson): void
+    public function setLegalPersonDetails(LegalPersonDetails $legalPersonDetails): void
     {
         if ($this->typeId !== ContractorType::LEGAL_PERSON) {
             throw new LogicException('Contractor is not legal person.');
         }
-        $this->legalPerson = $legalPerson;
+        $this->legalPersonDetails = $legalPersonDetails;
         $this->updateNames();
     }
 
-    public function getSoleProprietor(): SoleProprietor
+    public function getSoleProprietorDetails(): SoleProprietorDetails
     {
         if ($this->typeId !== ContractorType::SOLE_PROPRIETOR) {
             throw new LogicException('Contractor is not sole proprietor.');
         }
-        return $this->soleProprietor;
+        return $this->soleProprietorDetails;
     }
 
-    public function setSoleProprietor(SoleProprietor $soleProprietor): void
+    public function setSoleProprietorDetails(SoleProprietorDetails $soleProprietorDetails): void
     {
         if ($this->typeId !== ContractorType::SOLE_PROPRIETOR) {
             throw new LogicException('Contractor is not sole proprietor.');
         }
-        $this->soleProprietor = $soleProprietor;
+        $this->soleProprietorDetails = $soleProprietorDetails;
         $this->updateNames();
     }
 
-    public function getNaturalPerson(): NaturalPerson
+    public function getNaturalPersonDetails(): NaturalPersonDetails
     {
         if ($this->typeId !== ContractorType::NATURAL_PERSON) {
             throw new LogicException('Contractor is not natural person.');
         }
-        return $this->naturalPerson;
+        return $this->naturalPersonDetails;
     }
 
-    public function setNaturalPerson(NaturalPerson $naturalPerson): void
+    public function setNaturalPersonDetails(NaturalPersonDetails $naturalPersonDetails): void
     {
         if ($this->typeId !== ContractorType::NATURAL_PERSON) {
             throw new LogicException('Contractor is not natural person.');
         }
-        $this->naturalPerson = $naturalPerson;
+        $this->naturalPersonDetails = $naturalPersonDetails;
         $this->updateNames();
     }
 
     private function updateNames(): void
     {
-        $this->shortName = $this->getTypeData()->generateShortName();
-        $this->fullName = $this->getTypeData()->generateFullName();
+        $this->shortName = $this->getDetails()->generateShortName();
+        $this->fullName = $this->getDetails()->generateFullName();
     }
 
-    private function getTypeData(): TypeDataInterface
+    private function getDetails(): DetailsInterface
     {
         switch ($this->typeId) {
             case ContractorType::LEGAL_PERSON:
-                return $this->legalPerson;
+                return $this->legalPersonDetails;
             case ContractorType::SOLE_PROPRIETOR:
-                return $this->soleProprietor;
+                return $this->soleProprietorDetails;
             case ContractorType::NATURAL_PERSON:
-                return $this->naturalPerson;
+                return $this->naturalPersonDetails;
         }
         throw new LogicException('Incorrect contractor type');
     }

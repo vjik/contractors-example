@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Module\Accounting\Domain\Entity\Contractor;
 
 use vjik\enum\Enum;

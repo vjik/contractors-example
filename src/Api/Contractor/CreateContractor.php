@@ -1,18 +1,16 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Module\Accounting\Api\Contractor;
 
 use InvalidArgumentException;
 use Module\Accounting\Api\Dto\Contractor\Contractor\ContractorDto;
 use Module\Accounting\Api\Dto\Contractor\Contractor\ContractorDtoFactory;
-use Module\Accounting\Api\Dto\Contractor\CreateLegalPersonContractor\CreateLegalPersonContractorDto;
-use Module\Accounting\Api\Dto\Contractor\CreateLegalPersonContractor\DtoValidation;
+use Module\Accounting\Api\Dto\Contractor\CreateContractor\CreateContractorDto;
+use Module\Accounting\Api\Dto\Contractor\CreateContractor\DtoValidation;
 use Module\Accounting\Application\Contractor\CreateContractorService;
 use Throwable;
 
-final class CreateLegalPersonContractor
+class CreateContractor
 {
     private $createContractorService;
     private $dtoValidation;
@@ -29,15 +27,15 @@ final class CreateLegalPersonContractor
     }
 
     /**
-     * @param CreateLegalPersonContractorDto $dto
+     * @param CreateContractorDto $dto
      * @return ContractorDto
      * @throws InvalidArgumentException
      * @throws Throwable
      */
-    public function handle(CreateLegalPersonContractorDto $dto): ContractorDto
+    public function handle(CreateContractorDto $dto): ContractorDto
     {
         $this->dtoValidation->validate($dto);
-        $contractor = $this->createContractorService->createLegalPersonContractor($dto);
+        $contractor = $this->createContractorService->createContractor($dto);
         return $this->contractorDtoFactory->make($contractor);
     }
 }

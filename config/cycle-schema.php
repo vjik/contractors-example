@@ -5,8 +5,8 @@ declare(strict_types=1);
 use Cycle\ORM\Relation;
 use Cycle\ORM\Schema;
 use Module\Accounting\Domain\Entity\Contractor\Contractor;
-use Module\Accounting\Domain\Entity\Contractor\LegalPerson;
-use Module\Accounting\Domain\Entity\Contractor\NaturalPerson;
+use Module\Accounting\Domain\Entity\Contractor\LegalPersonDetails;
+use Module\Accounting\Domain\Entity\Contractor\NaturalPersonDetails;
 use Module\Accounting\Domain\Entity\Contractor\Passport;
 
 return [
@@ -27,7 +27,7 @@ return [
             'fullName' => 'string',
         ],
         Schema::RELATIONS => [
-            'legalPerson' => [
+            'legalPersonDetails' => [
                 Relation::TYPE => Relation::HAS_ONE,
                 Relation::TARGET => 'acc.contractor_legal_person',
                 Relation::SCHEMA => [
@@ -37,7 +37,7 @@ return [
                     Relation::OUTER_KEY => 'id',
                 ],
             ],
-            'naturalPerson' => [
+            'naturalPersonDetails' => [
                 Relation::TYPE => Relation::HAS_ONE,
                 Relation::TARGET => 'acc.contractor_natural_person',
                 Relation::SCHEMA => [
@@ -50,7 +50,7 @@ return [
         ],
     ],
     'acc.contractor_legal_person' => [
-        Schema::ENTITY => LegalPerson::class,
+        Schema::ENTITY => LegalPersonDetails::class,
         Schema::TABLE => 'acc_contractor_legal_person',
         Schema::PRIMARY_KEY => 'id',
         Schema::COLUMNS => [
@@ -76,7 +76,7 @@ return [
         Schema::RELATIONS => [],
     ],
     'acc.contractor_natural_person' => [
-        Schema::ENTITY => NaturalPerson::class,
+        Schema::ENTITY => NaturalPersonDetails::class,
         Schema::TABLE => 'acc_contractor_natural_person',
         Schema::PRIMARY_KEY => 'id',
         Schema::COLUMNS => [

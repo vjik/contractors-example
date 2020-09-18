@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Module\Accounting\Domain\Entity\Contractor;
 
-interface TypeDataInterface
+interface DetailsInterface
 {
     public function generateShortName(): string;
 

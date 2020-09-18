@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Module\Accounting\Api\Dto\Contractor\CreateLegalPersonContractor;
+namespace Module\Accounting\Api\Dto\Contractor\LegalPersonDetails;
 
 use InvalidArgumentException;
 
 final class DtoValidation
 {
     /**
-     * @param CreateLegalPersonContractorDto $dto
+     * @param LegalPersonDetailsDto $dto
      * @throws InvalidArgumentException
      */
-    public function validate(CreateLegalPersonContractorDto $dto)
+    public function validate(LegalPersonDetailsDto $dto)
     {
         $dto->shortName = $this->prepareNullOrString($dto->shortName, 'Short name');
         if ($dto->shortName) {

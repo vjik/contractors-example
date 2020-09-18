@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Module\Accounting\Api\Dto\Contractor\CreateNaturalPersonContractor;
+namespace Module\Accounting\Api\Dto\Contractor\NaturalPersonDetails;
 
 use InvalidArgumentException;
 use Module\Accounting\Api\Dto\Contractor\Passport\DtoValidation as PassportDtoValidation;
@@ -18,10 +18,10 @@ final class DtoValidation
     }
 
     /**
-     * @param CreateNaturalPersonContractorDto $dto
+     * @param NaturalPersonDetailsDto $dto
      * @throws InvalidArgumentException
      */
-    public function validate(CreateNaturalPersonContractorDto $dto)
+    public function validate(NaturalPersonDetailsDto $dto)
     {
         if (!($dto->passport instanceof PassportDto)) {
             throw new InvalidArgumentException('Passport should be PassportDto.');
