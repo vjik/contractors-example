@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Module\Accounting\Api\Contractor\Dto;
+namespace Module\Accounting\Api\Dto\Contractor\CreateLegalPersonContractor;
 
 final class CreateLegalPersonContractorDto
 {

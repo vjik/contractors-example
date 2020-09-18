@@ -84,6 +84,11 @@ final class Contractor
         return $this->typeId;
     }
 
+    public function getType(): ContractorType
+    {
+        return ContractorType::get($this->typeId);
+    }
+
     public function getShortName(): string
     {
         return $this->shortName;

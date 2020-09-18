@@ -2,7 +2,9 @@
 
 namespace Module\Accounting\Domain\Entity\Contractor;
 
-final class ContractorType
+use vjik\enum\Enum;
+
+final class ContractorType extends Enum
 {
     const LEGAL_PERSON = 1;
     const SOLE_PROPRIETOR = 2;

@@ -2,14 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Module\Accounting\Api\Contractor\Factory;
+namespace Module\Accounting\Api\Dto\Contractor\Contractor;
 
-use Module\Accounting\Api\Contractor\Dto\ContractorDto;
 use Module\Accounting\Domain\Entity\Contractor\Contractor;
 
 final class ContractorDtoFactory
 {
-    public static function make(Contractor $contractor): ContractorDto
+    public function make(Contractor $contractor): ContractorDto
     {
         $dto = new ContractorDto();
         $dto->id = $contractor->getId();

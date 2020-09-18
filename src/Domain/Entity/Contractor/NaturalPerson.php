@@ -24,6 +24,11 @@ final class NaturalPerson implements TypeDataInterface
         return $this->passport;
     }
 
+    public function setPassport(Passport $passport): void
+    {
+        $this->passport = $passport;
+    }
+
     public function generateShortName(): string
     {
         return $this->passport->getFullName();
